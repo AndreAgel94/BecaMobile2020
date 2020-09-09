@@ -2,6 +2,8 @@ package com.example.becamobile2020.presentation.heroes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.becamobile2020.R
@@ -16,16 +18,21 @@ class HeroesActivity : AppCompatActivity() {
         toolbarMain.title = getString(R.string.heroes_title)
         setSupportActionBar(toolbarMain)
 
-        with(recyclerHeroes){
-            layoutManager = LinearLayoutManager(this@HeroesActivity, RecyclerView.VERTICAL, false)
-            setHasFixedSize(true)
-            adapter = HeroesAdapter(getHeroes())
-        }
+
+        val heroesViewModel : HeroesViewModel = ViewModelProviders.of(this).get(HeroesViewModel::class.java)
+
+        heroesViewModel.heroesLiveData.observe(this, Observer {
+            it?.let {
+                with(recyclerHeroes){
+                    layoutManager = LinearLayoutManager(this@HeroesActivity, RecyclerView.VERTICAL, false)
+                    setHasFixedSize(true)
+                    adapter = HeroesAdapter(it)
+                }
+            }
+        })
+
+        heroesViewModel.getHeroes()
     }
 
-    fun getHeroes() : List<Hero>{
-        return listOf<Hero>(
-            Hero("spiderman","imgURL")
-        )
-    }
+
 }
