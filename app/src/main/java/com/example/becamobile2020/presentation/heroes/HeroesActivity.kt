@@ -10,7 +10,7 @@ class HeroesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_heroes)
 
-        toolbarMain.title = "Marvel Heroes xD"
+        toolbarMain.title = getString(R.string.heroes_title)
         setSupportActionBar(toolbarMain)
     }
 }
