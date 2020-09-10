@@ -4,5 +4,6 @@ import android.widget.ImageView
 
 data class Hero (
     val name: String,
-    val Heroimage: String
+    val description: String,
+    val heroimage: String
 )

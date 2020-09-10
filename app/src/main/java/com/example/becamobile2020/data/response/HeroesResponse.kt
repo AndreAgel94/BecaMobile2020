@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class HeroDataResponse (
-    @Json(name = "results")
-    val results : List<HeroResultsResponse>
+data class HeroesResponse (
+    @Json(name = "data")
+    val data : Data
 )
