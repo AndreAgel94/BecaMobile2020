@@ -2,6 +2,7 @@ package com.example.becamobile2020.presentation.heroes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +24,13 @@ class HeroesActivity : AppCompatActivity() {
 
         heroesViewModel.heroesLiveData.observe(this, Observer {
             it?.let {
+
+                for (item in it) {
+
+                   // Log.i("maluco2222", item.heroimage + item.extension)
+
+                }
+
                 with(recyclerHeroes){
                     layoutManager = LinearLayoutManager(this@HeroesActivity, RecyclerView.VERTICAL, false)
                     setHasFixedSize(true)
