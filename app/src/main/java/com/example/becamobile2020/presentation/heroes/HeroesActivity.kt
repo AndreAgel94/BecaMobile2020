@@ -27,7 +27,8 @@ class HeroesActivity : AppCompatActivity() {
 
                 for (item in it) {
 
-                   // Log.i("maluco2222", item.heroimage + item.extension)
+                   Log.i("maluco2222", item.name + item.description + " // "
+                           + item.thumbnail.path +"/standard_amazing"+"."+item.thumbnail.extension)
 
                 }
 
