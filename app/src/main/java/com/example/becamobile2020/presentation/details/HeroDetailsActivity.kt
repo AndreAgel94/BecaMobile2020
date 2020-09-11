@@ -23,7 +23,13 @@ class HeroDetailsActivity : AppCompatActivity() {
         val extension = intent.getStringExtra("CHAR_IMAGE_EXTENSION")
 
         heroNameDetails.text = name
-        heroDescriptionDetails.text = description
+        //heroDescriptionDetails.text = description
+        if (description == null || description == ""){
+            heroDescriptionDetails.text = "Marvel biographers have not yet traveled the universe of this hero," +
+                    " soon he will be studied."
+        }else{
+            heroDescriptionDetails.text = description
+        }
 
 
 

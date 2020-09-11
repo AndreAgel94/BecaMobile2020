@@ -14,8 +14,10 @@ import retrofit2.Response
 
 class HeroesViewModel : ViewModel(){
 
+    var query : String = "Spider"
     val _heroesLiveData = MutableLiveData<List<Character>>()
     val heroesLiveData : LiveData<List<Character>> = _heroesLiveData
+
 
     fun getHeroes(){
         ApiService.service.getHeroes().enqueue(object : Callback<HeroesResponse> {
@@ -34,5 +36,24 @@ class HeroesViewModel : ViewModel(){
 
         })
     }
+
+    fun getHeroesSelected(query: String){
+        ApiService.service.getHeroesSelected(query).enqueue(object : Callback<HeroesResponse> {
+
+            override fun onResponse(call: Call<HeroesResponse>, response: Response<HeroesResponse>) {
+                if (response.isSuccessful){
+                    response.body()?.let {heroesResponse ->
+                        _heroesLiveData.value = heroesResponse.data.results
+                    }
+                }
+
+            }
+            override fun onFailure(call: Call<HeroesResponse>, t: Throwable) {
+
+            }
+
+        })
+    }
+
 
 }
