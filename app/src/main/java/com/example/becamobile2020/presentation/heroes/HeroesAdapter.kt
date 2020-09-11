@@ -29,15 +29,6 @@ class HeroesAdapter(
     override fun onBindViewHolder(holder: HeroesViewHolder, position: Int) {
 
         holder.bind(heroesList[position])
-
-//        holder.itemView.textHeroName.text = heroesList[position].name
-//
-//        var thumbnail = "${heroesList[position].thumbnail.path}/standard_medium.${heroesList[position].thumbnail.extension}"
-//            .split(":")
-//
-//        Picasso.get().load("https:"+thumbnail[1]).into(holder.itemView.imageHero)
-
-
     }
 
     class HeroesViewHolder(
@@ -46,13 +37,14 @@ class HeroesAdapter(
     ) : RecyclerView.ViewHolder(itemView) {
 
         private val heroName = itemView.textHeroName
-        private val heroImg: ImageView = itemView.imageHero
 
         fun bind(char: Character) {
             heroName.text = char.name
-            var thumbnail = "${char.thumbnail.path}/standard_small.${char.thumbnail.extension}"
+
+            var url = "${char.thumbnail.path}/standard_small.${char.thumbnail.extension}"
                 .split(":")
-            Picasso.get().load("https:" + thumbnail[1]).into(itemView.imageHero)
+            Picasso.get().load("https:" + url[1]).into(itemView.imageHero)
+
 
             itemView.setOnClickListener {
                 OnItemClickListener.invoke(char)

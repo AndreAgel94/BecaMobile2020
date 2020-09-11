@@ -15,6 +15,8 @@ class HeroDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hero_details)
 
+        toolbarDetails.setTitle("Marvel Hero")
+
         val name = intent.getStringExtra("CHAR_NAME")
         val description = intent.getStringExtra("CHAR_DESCRIPTION")
         val path = intent.getStringExtra("CHAR_IMG_PATH")

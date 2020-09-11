@@ -49,9 +49,8 @@ dependencies {
     //picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-//    implementation 'com.squareup.okhttp:okhttp:2.2.0'
-//    implementation 'com.squareup.okhttp:okhttp-urlconnection:2.2.0'
-//    implementation 'com.squareup.picasso:picasso:2.4.0'
+    //MaterialSearchView
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
