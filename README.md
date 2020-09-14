@@ -18,3 +18,20 @@ modern JSON library for Android and Java. It makes it easy to parse JSON into Ja
 A powerful image downloading and caching library for Android
 * [Recycler View](https://developer.android.com/guide/topics/ui/layout/recyclerview)
 Create a List with RecyclerView
+### Como executar?
+* Clone o repositório <br />
+```
+$ git clone https://github.com/AndreAgel94/BecaMobile2020.git
+```
+* instale o [Android Studio](https://developer.android.com/studio/?gclid=Cj0KCQjwqfz6BRD8ARIsAIXQCf1TDuk2Rpr7UFi3W57PvX4WS4dVyMI8QK0uaK-zYwq1T-TweWTCuvYaAhm8EALw_wcB&gclsrc=aw.ds)
+* Abra o projeto pelo Android Studio
+* dê permissão de acesso a internet ao projeto, no seu manifest adcione: <br />
+
+```
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+```
+
+* Execute em um emulador <br /> 
+ou [no seu aparelho](https://developer.android.com/training/basics/firstapp/running-app?hl=pt-br)
