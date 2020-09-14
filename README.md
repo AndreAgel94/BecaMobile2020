@@ -18,6 +18,8 @@ modern JSON library for Android and Java. It makes it easy to parse JSON into Ja
 A powerful image downloading and caching library for Android
 * [Recycler View](https://developer.android.com/guide/topics/ui/layout/recyclerview)
 Create a List with RecyclerView
+* [MaterialSearchView](https://github.com/MiguelCatalan/MaterialSearchView)
+Cute library to implement SearchView in a Material Design Approach.
 ### Como executar?
 * Clone o repositório <br />
 ```
@@ -32,6 +34,17 @@ $ git clone https://github.com/AndreAgel94/BecaMobile2020.git
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
+* Substitua as constantes do arquivo Constants.kt para as suas Chaves de API
 
+```
+import java.util.*
+
+const val PUBLIC_KEY = "YOUR PUBLIC KEY HERE"
+const val PRIVATE_KEY = "YOUR PRIVATE KEY HERE"
+val TS = (Calendar.getInstance(TimeZone.getTimeZone("UTC")).timeInMillis / 1000L).toString()
+val HASH = "$TS$PRIVATE_KEY$PUBLIC_KEY"
+```
+
+* Em seu gradle(Module: app) implemente as depêndencias e sincronize(Sync Now)
 * Execute em um emulador <br /> 
 ou [no seu aparelho](https://developer.android.com/training/basics/firstapp/running-app?hl=pt-br)
