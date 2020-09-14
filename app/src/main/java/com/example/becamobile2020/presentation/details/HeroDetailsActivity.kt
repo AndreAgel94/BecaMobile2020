@@ -5,10 +5,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.becamobile2020.R
-import com.example.becamobile2020.data.response.Character
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_hero_details.*
-import kotlinx.android.synthetic.main.item_hero.view.*
+
 
 class HeroDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,15 +22,13 @@ class HeroDetailsActivity : AppCompatActivity() {
         val extension = intent.getStringExtra("CHAR_IMAGE_EXTENSION")
 
         heroNameDetails.text = name
-        //heroDescriptionDetails.text = description
+
         if (description == null || description == ""){
             heroDescriptionDetails.text = "Marvel biographers have not yet traveled the universe of this hero," +
                     " soon he will be studied."
         }else{
             heroDescriptionDetails.text = description
         }
-
-
 
         var url = "$path/standard_large.${extension}".split(":")
         Picasso.get().load("https:"+url[1]).into(heroImageDetails)

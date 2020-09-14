@@ -1,10 +1,9 @@
 package com.example.becamobile2020.presentation.heroes
 
-import android.util.Log
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.becamobile2020.R
 import com.example.becamobile2020.data.response.Character
@@ -13,7 +12,7 @@ import kotlinx.android.synthetic.main.item_hero.view.*
 
 class HeroesAdapter(
     private val heroesList: List<Character>,
-    val OnItemClickListener: ((character: Character) -> Unit)
+    private val OnItemClickListener: ((character: Character) -> Unit)
 ) : RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, view: Int): HeroesViewHolder {

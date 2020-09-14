@@ -1,11 +1,10 @@
 package com.example.becamobile2020.presentation.heroes
 
-import android.util.Log
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.becamobile2020.data.ApiService
-import com.example.becamobile2020.data.model.Hero
 import com.example.becamobile2020.data.response.Character
 import com.example.becamobile2020.data.response.HeroesResponse
 import retrofit2.Call
@@ -14,18 +13,17 @@ import retrofit2.Response
 
 class HeroesViewModel : ViewModel(){
 
-    var query : String = "Spider"
     val _heroesLiveData = MutableLiveData<List<Character>>()
-    val heroesLiveData : LiveData<List<Character>> = _heroesLiveData
+    val heroesLiveData : LiveData<List<Character>> = _heroesLiveData // livedata = MutableLiveData
 
 
-    fun getHeroes(){
+    fun getHeroes(){ // aplica o método enqueue a getHeroes do MarvelService
         ApiService.service.getHeroes().enqueue(object : Callback<HeroesResponse> {
 
             override fun onResponse(call: Call<HeroesResponse>, response: Response<HeroesResponse>) {
                 if (response.isSuccessful){
-                    response.body()?.let {heroesResponse ->
-                        _heroesLiveData.value = heroesResponse.data.results
+                    response.body()?.let {
+                        _heroesLiveData.value = it.data.results
                     }
                 }
 
@@ -37,7 +35,7 @@ class HeroesViewModel : ViewModel(){
         })
     }
 
-    fun getHeroesSelected(query: String){
+    fun getHeroesSelected(query: String){ // aplica o método enqueue a getHeroesSelected do MarvelService
         ApiService.service.getHeroesSelected(query).enqueue(object : Callback<HeroesResponse> {
 
             override fun onResponse(call: Call<HeroesResponse>, response: Response<HeroesResponse>) {

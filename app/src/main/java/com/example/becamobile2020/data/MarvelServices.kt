@@ -1,6 +1,6 @@
 package com.example.becamobile2020.data
 
-import com.example.becamobile2020.data.response.Data
+
 import com.example.becamobile2020.data.response.HeroesResponse
 import retrofit2.Call
 import retrofit2.http.GET
