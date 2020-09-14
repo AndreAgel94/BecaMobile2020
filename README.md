@@ -6,7 +6,7 @@
 
 ### Projeto
 Desenvolvido para botar na prática os conhecimentos adquiridos na Beca Mobile Everis. 
-Utilizando a [API da Marvel](http://exemplo.com/) para listar os personagens para que o usuário
+Utilizando a [API da Marvel](https://developer.marvel.com/) para listar os personagens para que o usuário
 possa escolher um do seu interesse, ou pesquisar por um específico, apresentando uma descrição da história 
 do personagem  
 ### Dependências 
