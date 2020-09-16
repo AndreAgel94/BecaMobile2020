@@ -4,9 +4,15 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.example.becamobile2020.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_hero_details.*
+import kotlinx.android.synthetic.main.item_hero.*
+import kotlinx.android.synthetic.main.item_hero.view.*
 
 
 class HeroDetailsActivity : AppCompatActivity() {
@@ -16,34 +22,30 @@ class HeroDetailsActivity : AppCompatActivity() {
 
         toolbarDetails.setTitle("Marvel Hero")
 
-        val name = intent.getStringExtra("CHAR_NAME")
-        val description = intent.getStringExtra("CHAR_DESCRIPTION")
-        val path = intent.getStringExtra("CHAR_IMG_PATH")
-        val extension = intent.getStringExtra("CHAR_IMAGE_EXTENSION")
+        val id = intent.getStringExtra("CHAR_ID")
 
-        heroNameDetails.text = name
+        val heroDetailsViewModel: HeroDetailsViewModel = ViewModelProviders.of(this).get(HeroDetailsViewModel::class.java)
 
-        if (description == null || description == ""){
-            heroDescriptionDetails.text = "Marvel biographers have not yet traveled the universe of this hero," +
-                    " soon he will be studied."
-        }else{
-            heroDescriptionDetails.text = description
-        }
+        heroDetailsViewModel.heroesLiveData.observe(this , Observer {
+            heroNameDetails.text = it.name
+            heroDescriptionDetails.text = it.description
 
-        var url = "$path/standard_large.${extension}".split(":")
-        Picasso.get().load("https:"+url[1]).into(heroImageDetails)
+            val url = "${it.thumbnail.path}/standard_medium.${it.thumbnail.extension}"
+                .split(":")
+            Picasso.get().load("https:" + url[1]).into(heroImageDetails)
+
+        })
+
+        heroDetailsViewModel.getCharById(id.toString())
     }
 
+    //pegando id da herosActivity
     companion object {
         fun getStartIntent(
-            context: Context, charName: String, charDescription: String,
-            charImgPath: String, charImgExtension: String
+            context: Context,  charId : String
         ): Intent {
             return Intent(context, HeroDetailsActivity::class.java).apply {
-                putExtra("CHAR_NAME" , charName)
-                putExtra("CHAR_DESCRIPTION" , charDescription)
-                putExtra("CHAR_IMG_PATH" , charImgPath)
-                putExtra("CHAR_IMAGE_EXTENSION" , charImgExtension)
+                putExtra("CHAR_ID" , charId)
             }
         }
     }

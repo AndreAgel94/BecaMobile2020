@@ -32,14 +32,15 @@ class HeroesActivity : AppCompatActivity() {
                 with(recyclerHeroes) {
                     layoutManager =
                         LinearLayoutManager(this@HeroesActivity, RecyclerView.VERTICAL, false)
-                    setHasFixedSize(true)
+                        setHasFixedSize(true)
                     //Seta ao adapter uma lista de character
+
                     adapter = HeroesAdapter(it) {
                         //recebendo no lambda um character
                         // e passando o character para a getIntent da details.
                         val intent = HeroDetailsActivity.getStartIntent(
-                            this@HeroesActivity, it.name,
-                            it.description, it.thumbnail.path, it.thumbnail.extension
+
+                            this@HeroesActivity, it.id
                         )
 
                         this@HeroesActivity.startActivity(intent)
@@ -56,13 +57,14 @@ class HeroesActivity : AppCompatActivity() {
 
         val inflater = menuInflater
         inflater.inflate(R.menu.menu_main, menu)
+
         val item : MenuItem = menu.findItem(R.id.menu_search)
+
         searchView.setMenuItem(item)
-        var  heroesViewModel: HeroesViewModel = ViewModelProviders.of(this).get(HeroesViewModel::class.java)
+        val heroesViewModel: HeroesViewModel = ViewModelProviders.of(this).get(HeroesViewModel::class.java)
 
         searchView.setOnQueryTextListener(object : MaterialSearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String): Boolean {
-                Log.i("query" , query)
                 heroesViewModel.getHeroesSelected(query)
                 return false
 

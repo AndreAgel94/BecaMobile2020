@@ -40,7 +40,7 @@ class HeroesAdapter(
         fun bind(char: Character) {
             heroName.text = char.name
 
-            var url = "${char.thumbnail.path}/standard_medium.${char.thumbnail.extension}"
+            val url = "${char.thumbnail.path}/standard_medium.${char.thumbnail.extension}"
                 .split(":")
             Picasso.get().load("https:" + url[1]).into(itemView.imageHero)
 

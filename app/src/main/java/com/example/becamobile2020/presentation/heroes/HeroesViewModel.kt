@@ -26,8 +26,8 @@ class HeroesViewModel : ViewModel(){
                         _heroesLiveData.value = it.data.results
                     }
                 }
-
             }
+
             override fun onFailure(call: Call<HeroesResponse>, t: Throwable) {
 
             }
