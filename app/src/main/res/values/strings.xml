@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">BecaMobile2020</string>
+
+    <!-- Heroes Activity -->
+    <string name="heroes_title">Marvel Heroes</string>
 </resources>
