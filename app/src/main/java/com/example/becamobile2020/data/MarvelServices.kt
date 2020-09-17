@@ -2,6 +2,7 @@ package com.example.becamobile2020.data
 
 
 import com.example.becamobile2020.data.response.HeroesResponse
+import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -43,11 +44,20 @@ interface MarvelServices {
     fun getHeroes(
 
         //@Query("nameStartsWith") nameStartsWith : String ,
-        @Query("limit") limit :Int = 100,
+        //@Query("limit") limit :Int = 100,
         @Query("ts") ts: String = TS,
         @Query("apikey") apikey: String = PUBLIC_KEY,
         @Query("hash") hash: String = HASH.md5()  // md5(TS+Pk+PB)
     ): Call<HeroesResponse>
+
+
+    @GET("characters")
+    fun getHeroesPaging(
+        @Query("offset") offset: Int,
+        @Query("ts") ts: String = TS,
+        @Query("apikey") apikey: String = PUBLIC_KEY,
+        @Query("hash") hash: String = HASH.md5()  // md5(TS+Pk+PB)
+    ): Observable<HeroesResponse>
 
 
 }

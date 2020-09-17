@@ -20,7 +20,7 @@ class HeroDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hero_details)
 
-        toolbarDetails.setTitle("Marvel Hero")
+        toolbarDetails.title = "Marvel Hero"
 
         val id = intent.getStringExtra("CHAR_ID")
 
@@ -30,7 +30,7 @@ class HeroDetailsActivity : AppCompatActivity() {
             heroNameDetails.text = it.name
             heroDescriptionDetails.text = it.description
 
-            val url = "${it.thumbnail.path}/standard_medium.${it.thumbnail.extension}"
+            val url = "${it.thumbnail.path}/standard_large.${it.thumbnail.extension}"
                 .split(":")
             Picasso.get().load("https:" + url[1]).into(heroImageDetails)
 
