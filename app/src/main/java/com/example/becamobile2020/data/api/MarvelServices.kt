@@ -1,8 +1,11 @@
-package com.example.becamobile2020.data
+package com.example.becamobile2020.data.api
 
 
+import com.example.becamobile2020.data.HASH
+import com.example.becamobile2020.data.PUBLIC_KEY
+import com.example.becamobile2020.data.TS
+import com.example.becamobile2020.data.md5
 import com.example.becamobile2020.data.response.HeroesResponse
-import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -33,7 +36,7 @@ interface MarvelServices {
     @GET("characters")
     fun getHeroesSelected(
 
-        @Query("nameStartsWith") nameStartsWith : String ,
+        @Query("nameStartsWith") nameStartsWith : String,
         @Query("ts") ts: String = TS,
         @Query("apikey") apikey: String = PUBLIC_KEY,
         @Query("hash") hash: String = HASH.md5()  // md5(TS+Pk+PB)
@@ -49,15 +52,5 @@ interface MarvelServices {
         @Query("apikey") apikey: String = PUBLIC_KEY,
         @Query("hash") hash: String = HASH.md5()  // md5(TS+Pk+PB)
     ): Call<HeroesResponse>
-
-
-    @GET("characters")
-    fun getHeroesPaging(
-        @Query("offset") offset: Int,
-        @Query("ts") ts: String = TS,
-        @Query("apikey") apikey: String = PUBLIC_KEY,
-        @Query("hash") hash: String = HASH.md5()  // md5(TS+Pk+PB)
-    ): Observable<HeroesResponse>
-
 
 }

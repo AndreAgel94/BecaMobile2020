@@ -13,8 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.details.HeroDetailsActivity"></activity>
-        <activity android:name=".presentation.heroes.HeroesActivity">
+        <activity android:name=".presentation.acivitys.HeroDetailsActivity"></activity>
+        <activity android:name=".presentation.acivitys.HeroesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.example.becamobile2020.data
+package com.example.becamobile2020.data.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory

@@ -1,4 +1,4 @@
-package com.example.becamobile2020.presentation.heroes
+package com.example.becamobile2020.presentation.acivitys
 
 
 import android.view.LayoutInflater
