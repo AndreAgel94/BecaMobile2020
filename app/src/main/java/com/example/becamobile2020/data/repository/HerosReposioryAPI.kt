@@ -2,16 +2,20 @@ package com.example.becamobile2020.data.repository
 
 import androidx.lifecycle.MutableLiveData
 import com.example.becamobile2020.data.api.ApiService
+import com.example.becamobile2020.data.model.Hero
 import com.example.becamobile2020.data.response.Character
 import com.example.becamobile2020.data.response.HeroesResponse
+import com.example.becamobile2020.presentation.registration.RegistrationViewParams
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HerosReposiory {
+class HerosReposioryAPI {
 
     val heroesLivedata : MutableLiveData<List<Character>> = MutableLiveData()
     val oneHeroLiveData : MutableLiveData<Character> = MutableLiveData()
+
+
 
     fun getHeroes() : MutableLiveData<List<Character>>{
         ApiService.service.getHeroes().enqueue(object : Callback<HeroesResponse> {

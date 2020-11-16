@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.becamobile2020.R
-import com.example.becamobile2020.data.repository.HerosReposiory
+import com.example.becamobile2020.data.repository.HerosReposioryAPI
 import com.example.becamobile2020.presentation.factory.HeroesViewModelFactory
 import com.example.becamobile2020.presentation.viewModel.HeroesViewModel
 import com.miguelcatalan.materialsearchview.MaterialSearchView
@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_heroes.*
 class HeroesActivity : AppCompatActivity() {
 
     private val viewModel by lazy {
-        val reposiory = HerosReposiory()
+        val reposiory = HerosReposioryAPI()
         val factory = HeroesViewModelFactory(reposiory)
         ViewModelProviders.of(this,factory).get(HeroesViewModel::class.java)
     }
@@ -52,33 +52,7 @@ class HeroesActivity : AppCompatActivity() {
             }
         })
 
-//        val heroesViewModel: HeroesViewModel = ViewModelProviders.of(this).get(HeroesViewModel::class.java)
-//
-//        //Observa o livedata do VM
-//        heroesViewModel.heroesLiveData.observe(this, Observer {
-//            it?.let {
-//                with(recyclerHeroes) {
-//                    layoutManager =
-//                        LinearLayoutManager(this@HeroesActivity, RecyclerView.VERTICAL, false)
-//                        setHasFixedSize(true)
-//                    //Seta ao adapter uma lista de character
-//
-//                    adapter = HeroesAdapter(it) {
-//                        //recebendo no lambda um character
-//                        // e passando o character para a getIntent da details.
-//                        val intent = HeroDetailsActivity.getStartIntent(
-//
-//                            this@HeroesActivity, it.id
-//                        )
-//
-//                        this@HeroesActivity.startActivity(intent)
-//
-//                    }
-//                }
-//            }
-//        })
 
-       // heroesViewModel.getHeroes()
     }
 
     override fun onCreateOptionsMenu(menu: Menu) : Boolean{
