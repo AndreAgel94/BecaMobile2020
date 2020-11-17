@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.becamobile2020.data.database.dao.HeroDao
 import com.example.becamobile2020.data.database.entity.HeroEntity
 
-@Database(entities = [HeroEntity::class], version = 1)
+@Database(entities = [HeroEntity::class], version = 1, exportSchema = false)
 abstract class AppDataBase : RoomDatabase(){
 
     abstract fun heroDao() : HeroDao

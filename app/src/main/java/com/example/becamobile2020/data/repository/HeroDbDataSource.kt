@@ -10,15 +10,26 @@ class HeroDbDataSource(
     private val heroDAO : HeroDao
 ) : HeroRepositoryDB{
     override fun createHeroDB(registrationViewParams: RegistrationViewParams) {
-        val heroEntity = registrationViewParams.toHeroEntity()
-        heroDAO.save(heroEntity)
+//        val heroEntity = registrationViewParams.toHeroEntity()
+//        heroDAO.save(heroEntity)
+        TODO()
     }
 
     override fun getHeroDB(id: String): Hero {
-        return heroDAO.getHero(id).toHero()
+//        return heroDAO.getHeroById(id).toHero()
+        TODO()
+    }
+
+    override fun getHeroByNameDB(name: String) : Hero {
+//        return heroDAO.getHeroByName(name).toHero()
+        TODO()
     }
 
     override fun getHeroesDB(): List<Hero> {
-        TODO("Achar uma solução para retornar uma lista de Heroes")
+        TODO("Achar uma solução para retornar uma lista de Heroes ??")
     }
 }
+
+
+
+

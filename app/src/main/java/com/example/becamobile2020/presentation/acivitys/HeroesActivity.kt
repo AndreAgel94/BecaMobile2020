@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.becamobile2020.R
+import com.example.becamobile2020.data.database.AppDataBase
 import com.example.becamobile2020.data.repository.HerosReposioryAPI
 import com.example.becamobile2020.presentation.factory.HeroesViewModelFactory
 import com.example.becamobile2020.presentation.viewModel.HeroesViewModel
@@ -19,8 +20,8 @@ import kotlinx.android.synthetic.main.activity_heroes.*
 class HeroesActivity : AppCompatActivity() {
 
     private val viewModel by lazy {
-        val reposiory = HerosReposioryAPI()
-        val factory = HeroesViewModelFactory(reposiory)
+        val reposioryAPI = HerosReposioryAPI(AppDataBase.getDatabase(this).heroDao())
+        val factory = HeroesViewModelFactory(reposioryAPI)
         ViewModelProviders.of(this,factory).get(HeroesViewModel::class.java)
     }
 
@@ -44,7 +45,6 @@ class HeroesActivity : AppCompatActivity() {
                             this@HeroesActivity,
                             it.id
                         )
-
                         this@HeroesActivity.startActivity(intent)
 
                     }
@@ -67,7 +67,7 @@ class HeroesActivity : AppCompatActivity() {
 
         searchView.setOnQueryTextListener(object : MaterialSearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String): Boolean {
-                heroesViewModel.getHeroesSelected(query)
+                heroesViewModel.getHeroesByName(query)
                 return false
 
             }

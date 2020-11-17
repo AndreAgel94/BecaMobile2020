@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.becamobile2020.R
+import com.example.becamobile2020.data.database.AppDataBase
 import com.example.becamobile2020.data.repository.HerosReposioryAPI
 import com.example.becamobile2020.presentation.factory.HeroDetailsViewModelFactory
 import com.example.becamobile2020.presentation.viewModel.HeroDetailsViewModel
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_hero_details.*
 class HeroDetailsActivity : AppCompatActivity() {
 
     private val viewModel by lazy {
-        val reposiory = HerosReposioryAPI()
+        val reposiory = HerosReposioryAPI(AppDataBase.getDatabase(this).heroDao())
         val factory = HeroDetailsViewModelFactory(reposiory)
         ViewModelProviders.of(this,factory).get(HeroDetailsViewModel::class.java)
     }

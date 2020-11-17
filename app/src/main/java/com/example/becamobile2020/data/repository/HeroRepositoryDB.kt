@@ -8,5 +8,7 @@ interface HeroRepositoryDB {
 
     fun getHeroDB(id: String) : Hero
 
+    fun getHeroByNameDB(name : String) : Hero
+
     fun getHeroesDB() : List<Hero>
 }
