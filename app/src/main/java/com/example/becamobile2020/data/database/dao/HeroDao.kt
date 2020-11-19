@@ -13,7 +13,7 @@ import com.example.becamobile2020.data.model.Hero
 interface HeroDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(hero : HeroEntity)
+   suspend fun save(hero : HeroEntity)
 
     @Query("SELECT * FROM hero WHERE id = :id")
     fun getHeroById(id: String) : LiveData<HeroEntity>

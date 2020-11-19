@@ -13,6 +13,7 @@ class HeroesViewModel(
 ) : ViewModel(){
 
     fun getHeroes() : MutableLiveData<List<Character>> {return reposioryAPI.getHeroes()}
+
     fun getAllHeroesDAO() : LiveData<List<HeroEntity>>{return reposioryAPI.getAllHeroesDAO()}
 
     fun getHeroesByName(query : String) : MutableLiveData<List<Character>> {return reposioryAPI.getHeroesByName(query)}

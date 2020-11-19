@@ -31,6 +31,7 @@ class HeroesActivity : AppCompatActivity() {
         toolbarMain.title = getString(R.string.heroes_title)
         setSupportActionBar(toolbarMain)
 
+
         viewModel.getHeroes().observe(this, Observer {
             it?.let {
                 with(recyclerHeroes){
