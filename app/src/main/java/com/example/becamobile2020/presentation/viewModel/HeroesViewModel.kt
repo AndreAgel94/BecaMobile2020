@@ -12,10 +12,12 @@ class HeroesViewModel(
     private val reposioryAPI: HerosReposioryAPI
 ) : ViewModel(){
 
-    fun getHeroes() : MutableLiveData<List<Character>> {return reposioryAPI.getHeroes()}
+    fun fecthHeroes()  {reposioryAPI.fetchHeroes()}
 
     fun getAllHeroesDAO() : LiveData<List<HeroEntity>>{return reposioryAPI.getAllHeroesDAO()}
 
     fun getHeroesByName(query : String) : MutableLiveData<List<Character>> {return reposioryAPI.getHeroesByName(query)}
+
+
     fun getHeroesByNameDAO(query: String) : LiveData<List<HeroEntity>>{return reposioryAPI.getHeroesByNameDAO(query)}
 }

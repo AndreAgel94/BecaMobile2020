@@ -1,8 +1,6 @@
 package com.example.becamobile2020.data.repository
 
 import com.example.becamobile2020.data.database.dao.HeroDao
-import com.example.becamobile2020.data.database.entity.toHero
-import com.example.becamobile2020.data.database.entity.toHeroEntity
 import com.example.becamobile2020.data.model.Hero
 import com.example.becamobile2020.presentation.registration.RegistrationViewParams
 

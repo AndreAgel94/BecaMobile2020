@@ -30,13 +30,21 @@ class HeroDetailsActivity : AppCompatActivity() {
         toolbarDetails.title = "Marvel Hero"
         val id = intent.getStringExtra("CHAR_ID")
 
-        viewModel.getCharById(id.toString()).observe(this, Observer {
+//        viewModel.getCharById(id.toString()).observe(this, Observer {
+//            heroNameDetails.text = it.name
+//            heroDescriptionDetails.text = it.description
+//
+//            val url = "${it.thumbnail.path}/standard_large.${it.thumbnail.extension}"
+//                .split(":")
+//            Picasso.get().load("https:" + url[1]).into(heroImageDetails)
+//        })
+        viewModel.getCharByIdDAO(id.toString()).observe(this, Observer {
             heroNameDetails.text = it.name
             heroDescriptionDetails.text = it.description
 
-            val url = "${it.thumbnail.path}/standard_large.${it.thumbnail.extension}"
+            val url = "${it.path}/standard_large.${it.extension}"
                 .split(":")
-            Picasso.get().load("https:" + url[1]).into(heroImageDetails)
+                Picasso.get().load("https:" + url[1]).into(heroImageDetails)
         })
     }
 

@@ -30,9 +30,9 @@ class HeroesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_heroes)
         toolbarMain.title = getString(R.string.heroes_title)
         setSupportActionBar(toolbarMain)
+        viewModel.fecthHeroes()
 
-
-        viewModel.getHeroes().observe(this, Observer {
+        viewModel.getAllHeroesDAO().observe(this, Observer {
             it?.let {
                 with(recyclerHeroes){
                     layoutManager = LinearLayoutManager(
@@ -47,12 +47,11 @@ class HeroesActivity : AppCompatActivity() {
                             it.id
                         )
                         this@HeroesActivity.startActivity(intent)
-
+                        
                     }
                 }
             }
         })
-
 
     }
 

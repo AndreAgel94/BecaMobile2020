@@ -2,6 +2,7 @@ package com.example.becamobile2020.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.liveData
 import androidx.room.Dao
 import com.example.becamobile2020.data.api.ApiService
 import com.example.becamobile2020.data.database.dao.HeroDao
@@ -28,17 +29,20 @@ class HerosReposioryAPI(
     fun saveHeroDAO(hero : HeroEntity){
         GlobalScope.launch { dao.save(hero) }
     }
-    fun getAllHeroesDAO()  : LiveData<List<HeroEntity>> {
-        return dao.getAllHeroes()
+    fun getAllHeroesDAO() = liveData {
+        emit(dao.getAllHeroes())
     }
+
     fun getHeroesByNameDAO(query: String) : LiveData<List<HeroEntity>> {
         return dao.getHeroByName(query)
     }
-    fun getCharByIdDAO(id: String) : LiveData<HeroEntity>{
-        return dao.getHeroById(id)
+    fun getCharByIdDAO(id: String) = liveData {
+        emit(dao.getHeroById(id))
     }
 
-    fun getHeroes() : MutableLiveData<List<Character>>{
+
+
+    fun fetchHeroes() {
 
         ApiService.service.getHeroes().enqueue(object : Callback<HeroesResponse> {
 
@@ -64,7 +68,6 @@ class HerosReposioryAPI(
             }
 
         })
-        return heroesLivedata
     }
 
     fun getHeroesByName(query: String) : MutableLiveData<List<Character>>{ // by name
@@ -87,23 +90,24 @@ class HerosReposioryAPI(
         return heroesLivedata
     }
 
-    fun getCharById(id : String) : MutableLiveData<Character>{
-        ApiService.service.getCharById(id).enqueue(object : Callback<HeroesResponse> {
-
-            override fun onResponse(call: Call<HeroesResponse>, response: Response<HeroesResponse>) {
-                if (response.isSuccessful){
-                    response.body()?.let {heroesResponse ->
-                        oneHeroLiveData.value = heroesResponse.data.results[0]
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<HeroesResponse>, t: Throwable) {
-
-            }
-
-        })
-        return oneHeroLiveData
+    fun getCharById(id : String) : LiveData<HeroEntity>{
+//        ApiService.service.getCharById(id).enqueue(object : Callback<HeroesResponse> {
+//
+//            override fun onResponse(call: Call<HeroesResponse>, response: Response<HeroesResponse>) {
+//                if (response.isSuccessful){
+//                    response.body()?.let {heroesResponse ->
+//                        oneHeroLiveData.value = heroesResponse.data.results[0]
+//                    }
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<HeroesResponse>, t: Throwable) {
+//
+//            }
+//
+//        })
+        //return oneHeroLiveData
+        return getCharByIdDAO(id)
     }
 
 }

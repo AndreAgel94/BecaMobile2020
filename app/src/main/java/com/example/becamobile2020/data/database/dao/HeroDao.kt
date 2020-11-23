@@ -16,11 +16,11 @@ interface HeroDao {
    suspend fun save(hero : HeroEntity)
 
     @Query("SELECT * FROM hero WHERE id = :id")
-    fun getHeroById(id: String) : LiveData<HeroEntity>
+    suspend fun getHeroById(id: String) : HeroEntity
 
     @Query("SELECT * FROM hero WHERE name LIKE '%' || :name || '%'")
     fun getHeroByName(name : String) : LiveData<List<HeroEntity>>
 
     @Query("SELECT * FROM hero")
-    fun getAllHeroes() : LiveData<List<HeroEntity>>
+   suspend fun getAllHeroes() : List<HeroEntity>
 }
