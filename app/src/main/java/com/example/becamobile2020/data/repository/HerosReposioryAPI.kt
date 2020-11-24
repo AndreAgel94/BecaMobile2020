@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.room.Dao
 import com.example.becamobile2020.data.api.ApiService
+import com.example.becamobile2020.data.database.AppDataBase
 import com.example.becamobile2020.data.database.dao.HeroDao
 import com.example.becamobile2020.data.database.entity.HeroEntity
 import com.example.becamobile2020.data.model.Hero
@@ -15,6 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.java.KoinJavaComponent.inject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,6 +24,8 @@ import retrofit2.Response
 class HerosReposioryAPI(
     private val dao : HeroDao
 ) {
+
+  // private val dao : HeroDao by inject()
 
     val heroesLivedata : MutableLiveData<List<Character>> = MutableLiveData()
     val oneHeroLiveData : MutableLiveData<Character> = MutableLiveData()
@@ -39,8 +43,6 @@ class HerosReposioryAPI(
     fun getCharByIdDAO(id: String) = liveData {
         emit(dao.getHeroById(id))
     }
-
-
 
     fun fetchHeroes() {
 
